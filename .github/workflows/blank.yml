@@ -19,11 +19,12 @@ jobs:
           java-version: "17"
           distribution: "temurin"
 
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+
       - name: Build debug APK
-        run: |
-          cd AccountingApp
-          chmod +x gradlew
-          ./gradlew assembleDebug
+        run: ./gradlew assembleDebug
+        working-directory: AccountingApp
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
