@@ -22,10 +22,13 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
 
+      - name: Generate Gradle wrapper
+        run: gradle wrapper
+        working-directory: AccountingApp
+
       - name: Build debug APK
-        run: |
-          chmod +x AccountingApp/gradlew
-          cd AccountingApp && ./gradlew assembleDebug
+        run: ./gradlew assembleDebug
+        working-directory: AccountingApp
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
