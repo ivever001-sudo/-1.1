@@ -23,8 +23,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug
-        working-directory: AccountingApp
+        run: |
+          chmod +x AccountingApp/gradlew
+          cd AccountingApp && ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
